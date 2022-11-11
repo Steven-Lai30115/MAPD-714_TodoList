@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  MAPD714-TodoList
 //
-//  Created by chin wai lai on 9/11/2022.
+//  Created by Pui Yan Cheung (301252393), Man Nok PUN (301269138), chin wai lai(301257824).
 //
 
 import UIKit
