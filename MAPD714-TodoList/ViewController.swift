@@ -26,7 +26,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        todoTableView.dataSource = self
+        todoTableView.delegate = self
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -109,6 +111,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             default:
                 let config = UISwipeActionsConfiguration(actions: [])
                 return config
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TaskDetailSegue" {
+            let button = sender as! UIButton
+            let cell = button.superview!.superview! as! TodoTableViewCell
+            let detailController = segue.destination as! TaskDetailViewController
+            detailController.todo = Todo(title: cell.titleLabel.text!, dueDate: cell.dueDateLabel.text!)
         }
     }
 }

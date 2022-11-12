@@ -74,7 +74,7 @@
                                                     <buttonConfiguration key="configuration" style="plain" image="EditButton"/>
                                                     <connections>
                                                         <action selector="onEditButtonClick:" destination="olc-A2-tdq" eventType="touchUpInside" id="3cC-Cu-wnV"/>
-                                                        <segue destination="xLy-BF-2sb" kind="show" id="lU3-AR-Up0"/>
+                                                        <segue destination="xLy-BF-2sb" kind="show" identifier="TaskDetailSegue" id="lU3-AR-Up0"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

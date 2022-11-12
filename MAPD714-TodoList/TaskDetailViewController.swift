@@ -8,6 +8,8 @@
 import UIKit
 
 class TaskDetailViewController: UIViewController {
+    
+    var todo: Todo?
 
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
@@ -22,6 +24,9 @@ class TaskDetailViewController: UIViewController {
         
         
         setDatePicker()
+        
+        taskNameTextField.text = todo?.title
+        dueDateTextField.text = todo?.dueDate
     }
     
     func setDatePicker(){
