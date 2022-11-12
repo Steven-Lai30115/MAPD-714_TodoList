@@ -63,7 +63,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let cell = tableView.dequeueReusableCell(withIdentifier: "todoTask cell", for: indexPath) as! TodoTableViewCell
                 let todo = todos[indexPath.row]
                 _ = DateFormatter()
-                cell.set(title: todo.title, date: "15/12/2022")
+                cell.set(todo: Todo(title: todo.title, dueDate: "15/12/2022"))
                 return cell
                 
             default:

@@ -13,13 +13,12 @@ class TodoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var dueDateLabel: UILabel!
     
-    
     @IBOutlet weak var editButton: UIButton!
     
     
-    func set(title: String, date: String){
-        titleLabel.text = title
-        dueDateLabel.text = date
+    func set(todo: Todo){
+        titleLabel.text = todo.title
+        dueDateLabel.text = todo.dueDate
     }
     
     
