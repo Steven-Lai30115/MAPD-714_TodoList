@@ -43,6 +43,7 @@
                                     <constraint firstAttribute="height" constant="376" id="JMQ-Wx-7c3"/>
                                     <constraint firstAttribute="width" constant="393" id="ftx-uV-k75"/>
                                 </constraints>
+                                <color key="separatorColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="todoTask cell" rowHeight="120" id="olc-A2-tdq" userLabel="Todo_Cell" customClass="TodoTableViewCell" customModule="MAPD714_TodoList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="120"/>
@@ -98,6 +99,7 @@
                                     <constraint firstAttribute="height" constant="291" id="RaL-Qp-0Ra"/>
                                     <constraint firstAttribute="width" constant="393" id="V6h-RR-4qz"/>
                                 </constraints>
+                                <color key="separatorColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pastTask cell" rowHeight="40" id="7jN-ai-Cho" customClass="PastTaskTableViewCell" customModule="MAPD714_TodoList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="40"/>

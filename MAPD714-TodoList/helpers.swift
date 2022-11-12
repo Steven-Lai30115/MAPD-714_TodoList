@@ -12,8 +12,8 @@ extension UITextField {
     
     func underlined() {
         let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGray.cgColor
+        let width = CGFloat(0.5)
+        border.borderColor = UIColor.systemBlue.cgColor
         border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: self.frame.size.height)
         border.borderWidth = width
         self.layer.addSublayer(border)
@@ -25,8 +25,8 @@ extension UITextField {
 extension UITextView {
     func underlined() {
         let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGray.cgColor
+        let width = CGFloat(0.5)
+        border.borderColor = UIColor.systemBlue.cgColor
         border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: self.frame.size.height)
         border.borderWidth = width
         self.layer.addSublayer(border)
