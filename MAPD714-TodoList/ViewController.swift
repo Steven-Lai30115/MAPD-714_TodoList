@@ -119,7 +119,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let button = sender as! UIButton
             let cell = button.superview!.superview! as! TodoTableViewCell
             let detailController = segue.destination as! TaskDetailViewController
-            detailController.todo = Todo(title: cell.titleLabel.text!, dueDate: cell.dueDateLabel.text!)
+            detailController.todo = Todo(title: cell.titleLabel.text!, isComplete: false, dueDate: cell.dueDateLabel.text!)
         }
     }
 }

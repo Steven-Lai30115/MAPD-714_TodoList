@@ -15,6 +15,8 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var dueDateTextField: UITextField!
+    @IBOutlet weak var isCompletedSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +29,8 @@ class TaskDetailViewController: UIViewController {
         
         taskNameTextField.text = todo?.title
         dueDateTextField.text = todo?.dueDate
+        isCompletedSwitch.setOn(todo!.isComplete, animated: true)
+        
     }
     
     func setDatePicker(){
