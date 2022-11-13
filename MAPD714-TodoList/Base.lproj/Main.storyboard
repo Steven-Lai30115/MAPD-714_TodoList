@@ -225,6 +225,9 @@
                                     </attributedString>
                                     <color key="baseBackgroundColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="onDeleteButtonClick:" destination="xLy-BF-2sb" eventType="touchUpInside" id="LNS-CP-ImB"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUe-bX-pGn">
                                 <rect key="frame" x="31" y="103" width="75" height="18"/>
@@ -295,6 +298,9 @@
                                     </attributedString>
                                     <color key="baseBackgroundColor" systemColor="tintColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="onSaveButtonClick:" destination="xLy-BF-2sb" eventType="touchUpInside" id="K7L-kf-kPi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3g-k6-D3Q">
                                 <rect key="frame" x="31" y="385" width="50" height="49"/>

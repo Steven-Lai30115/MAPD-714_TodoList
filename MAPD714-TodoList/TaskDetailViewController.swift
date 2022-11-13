@@ -59,7 +59,16 @@ class TaskDetailViewController: UIViewController {
         
    
     @IBAction func onCancelButtonClick(_ sender: UIButton) {
-        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func onSaveButtonClick(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func onDeleteButtonClick(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
