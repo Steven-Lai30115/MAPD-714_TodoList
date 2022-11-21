@@ -9,7 +9,7 @@ import UIKit
 
 class TodoTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var dueDateLabel: UILabel!
     
@@ -17,8 +17,8 @@ class TodoTableViewCell: UITableViewCell {
     
     
     func set(todo: Todo){
-        titleLabel.text = todo.title
-        dueDateLabel.text = todo.dueDate
+        nameLabel.text = todo.name
+//        dueDateLabel.text = todo.dueDate
     }
     
     

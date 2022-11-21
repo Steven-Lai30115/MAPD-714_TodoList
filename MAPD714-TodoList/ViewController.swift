@@ -11,15 +11,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var pastTaskTableView: UITableView!
     @IBOutlet var todoTableView: UITableView!
     var todos = [
-        Todo(title: "Medication for C1-23"),
-        Todo(title: "Medication for C1-22"),
-        Todo(title: "Medication for C1-21"),
-        Todo(title: "Medication for C1-20"),
-        Todo(title: "Medication for C1-19"),
-        Todo(title: "Medication for C1-18"),
-        Todo(title: "Medication for C1-17"),
-        Todo(title: "Medication for C1-16"),
-        Todo(title: "Medication for C1-15"),
+        Todo(name: "Medication for C1-23"),
+        Todo(name: "Medication for C1-22"),
+        Todo(name: "Medication for C1-21"),
+        Todo(name: "Medication for C1-20"),
+        Todo(name: "Medication for C1-19"),
+        Todo(name: "Medication for C1-18"),
+        Todo(name: "Medication for C1-17"),
+        Todo(name: "Medication for C1-16"),
+        Todo(name: "Medication for C1-15"),
     ]
     
     var pastTasks = [Todo]()
@@ -65,7 +65,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let cell = tableView.dequeueReusableCell(withIdentifier: "todoTask cell", for: indexPath) as! TodoTableViewCell
                 let todo = todos[indexPath.row]
                 _ = DateFormatter()
-                cell.set(todo: Todo(title: todo.title, dueDate: "15/12/2022"))
+                cell.set(todo: Todo(name: todo.name, dueDate: Date()))
                 return cell
                 
             default:
@@ -95,7 +95,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
                 let doneAction = UIContextualAction(style: .normal, title: "Done") { _, _, completion in
                     var test =  self.todos[indexPath.row]
-                    test.isComplete = true
+                    test.isCompleted = true
                     self.pastTasks.append(test)
                     self.todos.remove(at: indexPath.row)
                     self.todoTableView.deleteRows(at: [indexPath], with: .automatic)
@@ -119,7 +119,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let button = sender as! UIButton
             let cell = button.superview!.superview! as! TodoTableViewCell
             let detailController = segue.destination as! TaskDetailViewController
-            detailController.todo = Todo(title: cell.titleLabel.text!, isComplete: false, dueDate: cell.dueDateLabel.text!)
+            detailController.todo = Todo(
+                name: cell.nameLabel.text!,
+                isCompleted: false,
+                notes: "Notes", // todo: addnotes
+//                dueDate: Date(),
+                hasDueDate: false
+            )
         }
     }
 }

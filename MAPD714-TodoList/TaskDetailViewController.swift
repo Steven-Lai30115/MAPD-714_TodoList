@@ -27,9 +27,9 @@ class TaskDetailViewController: UIViewController {
         
         setDatePicker()
         
-        taskNameTextField.text = todo?.title
-        dueDateTextField.text = todo?.dueDate
-        isCompletedSwitch.setOn(todo!.isComplete, animated: true)
+        taskNameTextField.text = todo?.name
+//        dueDateTextField.text = todo?.dueDate
+        isCompletedSwitch.setOn(todo!.isCompleted, animated: true)
         
     }
     

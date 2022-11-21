@@ -8,7 +8,9 @@
 import Foundation
 
 struct Todo{
-    var title: String
-    var isComplete: Bool = false
-    var dueDate: String = ""
+    var name: String
+    var isCompleted: Bool = false
+    var notes: String = ""
+    var hasDueDate: Bool = true
+    var dueDate: Date? = Calendar.current.date(byAdding: .day, value: 10, to: Date())!
 }

@@ -19,7 +19,7 @@ class PastTaskTableViewCell: UITableViewCell {
         pastTaskLabel.attributedText = getPastTaskText(task: task)
         
 
-        if(task.isComplete){
+        if(task.isCompleted){
             
             checkMarkImage.image = UIImage(named: "checkMark")
             pastTaskLabel.textColor = .systemGreen
@@ -31,9 +31,9 @@ class PastTaskTableViewCell: UITableViewCell {
     
     
     func getPastTaskText(task: Todo) -> NSAttributedString {
-        if task.isComplete {
+        if task.isCompleted {
             let attributedText = NSAttributedString(
-                string: task.title,
+                string: task.name,
                 attributes: [.underlineStyle: NSUnderlineStyle.single]
             )
             
@@ -41,7 +41,7 @@ class PastTaskTableViewCell: UITableViewCell {
         }
         
         let attributedText = NSAttributedString(
-            string: task.title,
+            string: task.name,
             attributes: [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
         )
         return attributedText

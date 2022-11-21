@@ -83,7 +83,7 @@
                                         <connections>
                                             <outlet property="dueDateLabel" destination="Vd8-AN-rJr" id="QG2-gy-isd"/>
                                             <outlet property="editButton" destination="4qg-i9-fO3" id="wdu-6q-M0Y"/>
-                                            <outlet property="titleLabel" destination="FNj-eH-ADP" id="9iY-0j-Jyh"/>
+                                            <outlet property="nameLabel" destination="FNj-eH-ADP" id="BF7-9u-TuT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
