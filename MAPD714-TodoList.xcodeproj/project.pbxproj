@@ -20,12 +20,12 @@
 		7AD478CC291C3F5C004B4043 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD478CB291C3F5C004B4043 /* Todo.swift */; };
 		B1DEEBAD292C034B0002AFE4 /* TodoDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DEEBAC292C034B0002AFE4 /* TodoDatabase.swift */; };
 		B1DEEBAF292C06350002AFE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1DEEBAE292C06340002AFE4 /* GoogleService-Info.plist */; };
-		B1DEEBB3292C11530002AFE4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B1DEEBB2292C11530002AFE4 /* FirebaseAuth */; };
-		B1DEEBB5292C11530002AFE4 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B1DEEBB4292C11530002AFE4 /* FirebaseDatabase */; };
-		B1DEEBB7292C17270002AFE4 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B1DEEBB6292C17270002AFE4 /* FirebaseFirestore */; };
+		E68A6D2640DBC52F960FA7D9 /* Pods_MAPD714_TodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF92DB53E7ABA0D0595A2DE /* Pods_MAPD714_TodoList.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E205430B0885F189E504EC9 /* Pods-MAPD714-TodoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAPD714-TodoList.release.xcconfig"; path = "Target Support Files/Pods-MAPD714-TodoList/Pods-MAPD714-TodoList.release.xcconfig"; sourceTree = "<group>"; };
+		4F7BBBA8CBD764D2185B8262 /* Pods-MAPD714-TodoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAPD714-TodoList.debug.xcconfig"; path = "Target Support Files/Pods-MAPD714-TodoList/Pods-MAPD714-TodoList.debug.xcconfig"; sourceTree = "<group>"; };
 		7A230486291C7A3C00F299E0 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		7A23048C291E095200F299E0 /* PastTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastTaskTableViewCell.swift; sourceTree = "<group>"; };
 		7A23048E291EA4BE00F299E0 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +39,7 @@
 		7AD478C1291C33C2004B4043 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7AD478C3291C33C2004B4043 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AD478CB291C3F5C004B4043 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		7EF92DB53E7ABA0D0595A2DE /* Pods_MAPD714_TodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAPD714_TodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1DEEBAC292C034B0002AFE4 /* TodoDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDatabase.swift; sourceTree = "<group>"; };
 		B1DEEBAE292C06340002AFE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,20 +49,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1DEEBB5292C11530002AFE4 /* FirebaseDatabase in Frameworks */,
-				B1DEEBB3292C11530002AFE4 /* FirebaseAuth in Frameworks */,
-				B1DEEBB7292C17270002AFE4 /* FirebaseFirestore in Frameworks */,
+				E68A6D2640DBC52F960FA7D9 /* Pods_MAPD714_TodoList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4711277330F1DE7FF901364A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7EF92DB53E7ABA0D0595A2DE /* Pods_MAPD714_TodoList.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7AD478A9291C33C2004B4043 = {
 			isa = PBXGroup;
 			children = (
 				7AD478B4291C33C2004B4043 /* MAPD714-TodoList */,
 				7AD478B3291C33C2004B4043 /* Products */,
+				831936D94CFD6B31C73377E7 /* Pods */,
+				4711277330F1DE7FF901364A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +103,15 @@
 			path = "MAPD714-TodoList";
 			sourceTree = "<group>";
 		};
+		831936D94CFD6B31C73377E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F7BBBA8CBD764D2185B8262 /* Pods-MAPD714-TodoList.debug.xcconfig */,
+				1E205430B0885F189E504EC9 /* Pods-MAPD714-TodoList.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B1DEEBAB292C030E0002AFE4 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,9 +127,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7AD478C6291C33C2004B4043 /* Build configuration list for PBXNativeTarget "MAPD714-TodoList" */;
 			buildPhases = (
+				67BF0812291CAC53BF243767 /* [CP] Check Pods Manifest.lock */,
 				7AD478AE291C33C2004B4043 /* Sources */,
 				7AD478AF291C33C2004B4043 /* Frameworks */,
 				7AD478B0291C33C2004B4043 /* Resources */,
+				D59BA36871669BD607F291BB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -119,9 +139,6 @@
 			);
 			name = "MAPD714-TodoList";
 			packageProductDependencies = (
-				B1DEEBB2292C11530002AFE4 /* FirebaseAuth */,
-				B1DEEBB4292C11530002AFE4 /* FirebaseDatabase */,
-				B1DEEBB6292C17270002AFE4 /* FirebaseFirestore */,
 			);
 			productName = "MAPD714-TodoList";
 			productReference = 7AD478B2291C33C2004B4043 /* MAPD714-TodoList.app */;
@@ -176,6 +193,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		67BF0812291CAC53BF243767 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MAPD714-TodoList-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D59BA36871669BD607F291BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MAPD714-TodoList/Pods-MAPD714-TodoList-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MAPD714-TodoList/Pods-MAPD714-TodoList-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MAPD714-TodoList/Pods-MAPD714-TodoList-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7AD478AE291C33C2004B4043 /* Sources */ = {
@@ -332,6 +391,7 @@
 		};
 		7AD478C7291C33C2004B4043 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F7BBBA8CBD764D2185B8262 /* Pods-MAPD714-TodoList.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -360,6 +420,7 @@
 		};
 		7AD478C8291C33C2004B4043 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E205430B0885F189E504EC9 /* Pods-MAPD714-TodoList.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -419,24 +480,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B1DEEBB2292C11530002AFE4 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B1DEEBB0292C08A00002AFE4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		B1DEEBB4292C11530002AFE4 /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B1DEEBB0292C08A00002AFE4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		B1DEEBB6292C17270002AFE4 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B1DEEBB0292C08A00002AFE4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7AD478AA291C33C2004B4043 /* Project object */;
 }

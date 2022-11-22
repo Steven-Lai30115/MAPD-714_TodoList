@@ -9,7 +9,7 @@ import FirebaseFirestore
 import UIKit
 import Foundation
 import FirebaseCore
-//import RxSwift
+import RxSwift
 
 class TodoDatabase : ObservableObject
 {
@@ -19,7 +19,8 @@ class TodoDatabase : ObservableObject
 
     init()
     {
-        self.getTodoList(true)
+        self.getTodoList()
+//        self.getTodoList(true)
 //        self.insertTodo(
 //            Todo(
 //                name: "abc",
@@ -39,29 +40,34 @@ class TodoDatabase : ObservableObject
 //        )
     }
     
-    func getTodoList(_ isCompleted: Bool)
+    func getTodoList()
     {
-
         let db = Firestore.firestore()
-        db.collection(self.dbName).getDocuments()
-        { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let item = Todo(
-                        name: document.data()["name"] as! String,
-                        isCompleted: document.data()["isCompleted"] as! Bool,
-                        notes: document.data()["notes"] as! String,
-                        hasDueDate: document.data()["hasDueDate"] as! Bool,
-                        dueDate: document.data()["dueDate"] as? Date
-                    )
-                    // todo todo list should be observable
-                    self.todoList.append(item)
-                    print("\(document.documentID) => \(document.data()) => \(document)")
-                }
-            }
-        }
+//        Observable.from(optional: <#T##Element?#>)
+//        return Observable.from(db.collection(self.dbName).getDocuments())
+         
+        
+        
+//        db.collection(self.dbName).getDocuments()
+//        { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                for document in querySnapshot!.documents {
+//                    let item = Todo(
+//                        name: document.data()["name"] as! String,
+//                        isCompleted: document.data()["isCompleted"] as! Bool,
+//                        notes: document.data()["notes"] as! String,
+//                        hasDueDate: document.data()["hasDueDate"] as! Bool,
+//                        dueDate: document.data()["dueDate"] as? Date
+//                    )
+//                    // todo todo list should be observable
+//                    self.todoList.append(item)
+//                    print("\(document.documentID) => \(document.data()) => \(document)")
+//                }
+//            }
+//        }
+//        Observable.from(self.todoList)
     }
     
     func insertTodo(_ todo: Todo)

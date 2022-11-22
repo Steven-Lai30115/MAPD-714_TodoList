@@ -10,17 +10,8 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var pastTaskTableView: UITableView!
     @IBOutlet var todoTableView: UITableView!
-    var todos = [
-        Todo(name: "Medication for C1-23"),
-        Todo(name: "Medication for C1-22"),
-        Todo(name: "Medication for C1-21"),
-        Todo(name: "Medication for C1-20"),
-        Todo(name: "Medication for C1-19"),
-        Todo(name: "Medication for C1-18"),
-        Todo(name: "Medication for C1-17"),
-        Todo(name: "Medication for C1-16"),
-        Todo(name: "Medication for C1-15"),
-    ]
+    var todos: [Todo] = []
+    var db: TodoDatabase = TodoDatabase()
     
     var pastTasks = [Todo]()
     
@@ -29,7 +20,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         todoTableView.dataSource = self
         todoTableView.delegate = self
-//        TodoDatabase()
+//        db.getTodoList(isCompleted: false)
+//        db.todos.subscribe(
+//            onNext: { n in
+//            print(n)
+//          })
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

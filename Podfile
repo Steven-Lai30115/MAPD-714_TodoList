@@ -8,5 +8,8 @@ target 'MAPD714-TodoList' do
   # Pods for MAPD714-TodoList
  	pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
+  pod 'RxSwift' 
+  pod 'RxCocoa'
 
 end
