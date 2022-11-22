@@ -11,5 +11,7 @@ target 'MAPD714-TodoList' do
   pod 'Firebase/Auth'
   pod 'RxSwift' 
   pod 'RxCocoa'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
 
 end

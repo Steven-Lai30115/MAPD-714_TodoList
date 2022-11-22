@@ -16,5 +16,6 @@ struct Todo{
     var isCompleted: Bool = false
     var notes: String = ""
     var hasDueDate: Bool = true
+    var isDeleted: Bool = false
     var dueDate: Date? = Calendar.current.date(byAdding: .day, value: 10, to: Date())!
 }

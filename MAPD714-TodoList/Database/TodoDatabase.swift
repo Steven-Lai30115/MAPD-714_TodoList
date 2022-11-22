@@ -21,12 +21,14 @@ class TodoDatabase : ObservableObject
         return Observable.create
         { observer in
             db.collection(self.dbName).addSnapshotListener
-            { querySnapshot, error in
+            {
+                querySnapshot, error in
                 if let error = error {
                     observer.onError(error)
                 }
                 let dataRows: [Todo] = querySnapshot!.documents.map(
-                    {doc in let row = doc.data()
+                    {
+                        doc in let row = doc.data()
                         var date: Date? = Date()
                         if (row["hasDueDate"] as! Bool ) {
                             let d = row["dueDate"] as! Timestamp
@@ -74,5 +76,21 @@ class TodoDatabase : ObservableObject
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
+    }
+    
+    func markAsComplete(_ todoId: String, _ isCompleted: Bool)
+    {
+        Firestore.firestore()
+        .collection(self.dbName)
+        .document(todoId)
+        .updateData(["isCompleted": isCompleted])
+    }
+    
+    func markAsDelete(_ todoId: String, _ isDeleted: Bool)
+    {
+        Firestore.firestore()
+        .collection(self.dbName)
+        .document(todoId)
+        .updateData(["isDeleted": isDeleted])
     }
 }

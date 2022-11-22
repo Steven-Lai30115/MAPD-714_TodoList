@@ -22,13 +22,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         todoTableView.dataSource = self
         todoTableView.delegate = self
         
-        var disposal = self.db.getTodoList().subscribe
+        // todo should be disposal
+        var _ = self.db.getTodoList().subscribe
         { event in
             switch event {
             case .next(let rows):
                 let todoList = rows as! [Todo]
-                self.todos = todoList.filter{ row in row.isCompleted }
-                self.pastTasks = todoList.filter{ row in !row.isCompleted }
+                self.todos = todoList.filter{ row in !row.isCompleted && !row.isDeleted}
+                self.pastTasks = todoList.filter{ row in row.isCompleted && !row.isDeleted}
 
                 // reload table view after data is loaded
                 self.todoTableView.reloadData()
@@ -93,21 +94,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         switch tableView {
             case todoTableView:
                 let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, completion in
-                    let test =  self.todos[indexPath.row]
-                    self.pastTasks.append(test)
-                    self.todos.remove(at: indexPath.row)
-                    self.todoTableView.deleteRows(at: [indexPath], with: .automatic)
+                    let todo =  self.todos[indexPath.row]
                     self.pastTaskTableView.reloadData()
+                    self.todoTableView.reloadData()
                     completion(true)
                 }
                 
                 let doneAction = UIContextualAction(style: .normal, title: "Done") { _, _, completion in
-                    var test =  self.todos[indexPath.row]
-                    test.isCompleted = true
-                    self.pastTasks.append(test)
-                    self.todos.remove(at: indexPath.row)
-                    self.todoTableView.deleteRows(at: [indexPath], with: .automatic)
+                    var todo =  self.todos[indexPath.row]
+                    self.db.markAsComplete(todo.id, true)
                     self.pastTaskTableView.reloadData()
+                    self.todoTableView.reloadData()
                     completion(true)
                 }
                 doneAction.backgroundColor = .systemGreen
