@@ -15,10 +15,12 @@ class TodoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var editButton: UIButton!
     
+    var todo : Todo = Todo()
+    
     
     func set(todo: Todo){
         nameLabel.text = todo.name
-//        dueDateLabel.text = todo.dueDate
+        self.todo = todo
     }
     
     

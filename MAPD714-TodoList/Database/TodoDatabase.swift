@@ -14,60 +14,41 @@ import RxSwift
 class TodoDatabase : ObservableObject
 {
     var dbName = "todos";
-//    var todos : Observable<[Todo]>
-    var todoList: [Todo] = []
-
-    init()
-    {
-        self.getTodoList()
-//        self.getTodoList(true)
-//        self.insertTodo(
-//            Todo(
-//                name: "abc",
-//                isCompleted: true,
-//                notes: "hahhaha",
-//                hasDueDate: true ,
-//                dueDate: Calendar.current.date(byAdding: .day, value: 5, to: Date())
-//            )
-//        )
-//        self.insertTodo(
-//            Todo(
-//                name: "cba",
-//                isCompleted: false,
-//                notes: "lalal",
-//                hasDueDate: false
-//            )
-//        )
-    }
     
-    func getTodoList()
+    func getTodoList() -> Observable<[Any]>
     {
         let db = Firestore.firestore()
-//        Observable.from(optional: <#T##Element?#>)
-//        return Observable.from(db.collection(self.dbName).getDocuments())
-         
+        return Observable.create
+        { observer in
+            db.collection(self.dbName).addSnapshotListener
+            { querySnapshot, error in
+                if let error = error {
+                    observer.onError(error)
+                }
+                let dataRows: [Todo] = querySnapshot!.documents.map(
+                    {doc in let row = doc.data()
+                        var date: Date? = Date()
+                        if (row["hasDueDate"] as! Bool ) {
+                            let d = row["dueDate"] as! Timestamp
+                            date = d.dateValue()
+                        } else {
+                            date = nil
+                        }
+                        return Todo(
+                            id: doc.documentID,
+                            name: row["name"] as! String,
+                            isCompleted: row["isCompleted"] as! Bool,
+                            notes: row["notes"] as! String,
+                            hasDueDate: row["hasDueDate"] as! Bool,
+                            dueDate: date
+                        )
+                    }
+                )
+                observer.onNext(dataRows)
+            }
+            return Disposables.create()
+        }
         
-        
-//        db.collection(self.dbName).getDocuments()
-//        { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                for document in querySnapshot!.documents {
-//                    let item = Todo(
-//                        name: document.data()["name"] as! String,
-//                        isCompleted: document.data()["isCompleted"] as! Bool,
-//                        notes: document.data()["notes"] as! String,
-//                        hasDueDate: document.data()["hasDueDate"] as! Bool,
-//                        dueDate: document.data()["dueDate"] as? Date
-//                    )
-//                    // todo todo list should be observable
-//                    self.todoList.append(item)
-//                    print("\(document.documentID) => \(document.data()) => \(document)")
-//                }
-//            }
-//        }
-//        Observable.from(self.todoList)
     }
     
     func insertTodo(_ todo: Todo)
@@ -80,7 +61,7 @@ class TodoDatabase : ObservableObject
             "notes": todo.notes,
             "hasDueDate": todo.hasDueDate
         ]
-        if (todo.hasDueDate)
+        if (todo.hasDueDate == true)
         {
             data["dueDate"] = todo.dueDate! as Date
         }

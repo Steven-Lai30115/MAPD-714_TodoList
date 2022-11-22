@@ -8,7 +8,11 @@
 import Foundation
 
 struct Todo{
-    var name: String
+    // firebase id
+    var id: String = ""
+    
+    // firebase data
+    var name: String = ""
     var isCompleted: Bool = false
     var notes: String = ""
     var hasDueDate: Bool = true

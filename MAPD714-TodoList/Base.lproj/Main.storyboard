@@ -396,7 +396,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="descriptionTextView" destination="U0s-yv-wy4" id="pXB-K5-gpF"/>
+                        <outlet property="descriptionTextView" destination="U0s-yv-wy4" id="lUw-BK-1fA"/>
                         <outlet property="dueDateTextField" destination="cAJ-hL-2Yt" id="xVK-Xn-sUc"/>
                         <outlet property="isCompletedSwitch" destination="28I-Xw-cg5" id="AoK-YY-ZaP"/>
                         <outlet property="taskNameTextField" destination="2Hq-me-K4h" id="N3f-uG-HQS"/>

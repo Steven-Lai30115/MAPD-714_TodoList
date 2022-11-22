@@ -9,7 +9,7 @@ import UIKit
 
 class TaskDetailViewController: UIViewController {
     
-    var todo: Todo?
+    var todo: Todo = Todo()
 
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
@@ -26,10 +26,15 @@ class TaskDetailViewController: UIViewController {
         
         
         setDatePicker()
+        print("??????", todo)
         
-        taskNameTextField.text = todo?.name
-//        dueDateTextField.text = todo?.dueDate
-        isCompletedSwitch.setOn(todo!.isCompleted, animated: true)
+        taskNameTextField.text = todo.name
+        descriptionTextView.text = todo.notes
+        
+        // todo pass string
+//        dueDateTextField.text = String(todo?.dueDate)
+        
+        isCompletedSwitch.setOn(todo.isCompleted, animated: true)
         
     }
     

@@ -10,9 +10,10 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var pastTaskTableView: UITableView!
     @IBOutlet var todoTableView: UITableView!
-    var todos: [Todo] = []
+    var todos: [Todo] = [
+        Todo(name: "Medication for C1-23"),
+    ]
     var db: TodoDatabase = TodoDatabase()
-    
     var pastTasks = [Todo]()
     
     override func viewDidLoad() {
@@ -20,11 +21,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         todoTableView.dataSource = self
         todoTableView.delegate = self
-//        db.getTodoList(isCompleted: false)
-//        db.todos.subscribe(
-//            onNext: { n in
-//            print(n)
-//          })
+        
+        var disposal = self.db.getTodoList().subscribe
+        { event in
+            switch event {
+            case .next(let rows):
+                let todoList = rows as! [Todo]
+                self.todos = todoList.filter{ row in row.isCompleted }
+                self.pastTasks = todoList.filter{ row in !row.isCompleted }
+
+                // reload table view after data is loaded
+                self.todoTableView.reloadData()
+                self.pastTaskTableView.reloadData()
+                case .error(let error): print("observe error ", error)
+                case .completed:  print("observe complete")
+            }
+          }
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -61,7 +73,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let cell = tableView.dequeueReusableCell(withIdentifier: "todoTask cell", for: indexPath) as! TodoTableViewCell
                 let todo = todos[indexPath.row]
                 _ = DateFormatter()
-                cell.set(todo: Todo(name: todo.name, dueDate: Date()))
+                cell.set(todo: todo)
                 return cell
                 
             default:
@@ -115,13 +127,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let button = sender as! UIButton
             let cell = button.superview!.superview! as! TodoTableViewCell
             let detailController = segue.destination as! TaskDetailViewController
-            detailController.todo = Todo(
-                name: cell.nameLabel.text!,
-                isCompleted: false,
-                notes: "Notes", // todo: addnotes
-//                dueDate: Date(),
-                hasDueDate: false
-            )
+            detailController.todo = cell.todo
         }
     }
 }
