@@ -95,6 +95,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             case todoTableView:
                 let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, completion in
                     let todo =  self.todos[indexPath.row]
+                    self.db.markAsDelete(todo.id, true)
                     self.pastTaskTableView.reloadData()
                     self.todoTableView.reloadData()
                     completion(true)

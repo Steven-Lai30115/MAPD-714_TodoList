@@ -10,6 +10,7 @@ import UIKit
 class TaskDetailViewController: UIViewController {
     
     var todo: Todo = Todo()
+    var db = TodoDatabase()
 
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
@@ -26,7 +27,6 @@ class TaskDetailViewController: UIViewController {
         
         
         setDatePicker()
-        print("??????", todo)
         
         taskNameTextField.text = todo.name
         descriptionTextView.text = todo.notes
@@ -69,11 +69,18 @@ class TaskDetailViewController: UIViewController {
     
     
     @IBAction func onSaveButtonClick(_ sender: UIButton) {
+        // todo handle date
+//        todo.dueDate = dueDateTextField.text
+        todo.name = taskNameTextField!.text!
+        todo.notes = descriptionTextView!.text
+        todo.isCompleted = isCompletedSwitch.isOn
+        db.updateTodo(todo)
         self.navigationController?.popViewController(animated: true)
     }
     
     
     @IBAction func onDeleteButtonClick(_ sender: UIButton) {
+        db.markAsDelete(todo.id, true)
         self.navigationController?.popViewController(animated: true)
     }
     

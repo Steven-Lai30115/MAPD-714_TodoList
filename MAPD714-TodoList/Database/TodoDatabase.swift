@@ -57,17 +57,7 @@ class TodoDatabase : ObservableObject
     {
         let db = Firestore.firestore()
         var ref: DocumentReference? = nil
-        var data: [String: Any]  = [
-            "name": todo.name,
-            "isCompleted": todo.isCompleted,
-            "notes": todo.notes,
-            "hasDueDate": todo.hasDueDate
-        ]
-        if (todo.hasDueDate == true)
-        {
-            data["dueDate"] = todo.dueDate! as Date
-        }
-
+        var data: [String: Any]  = todo.deserialize
         ref = db.collection(self.dbName)
             .addDocument(data: data) { err in
             if let err = err {
@@ -92,5 +82,14 @@ class TodoDatabase : ObservableObject
         .collection(self.dbName)
         .document(todoId)
         .updateData(["isDeleted": isDeleted])
+    }
+    
+    // not tested
+    func updateTodo(_ todo: Todo)
+    {
+        Firestore.firestore()
+        .collection(self.dbName)
+        .document(todo.id)
+        .updateData(todo.deserialize)
     }
 }

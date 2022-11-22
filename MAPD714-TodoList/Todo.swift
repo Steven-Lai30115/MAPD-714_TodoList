@@ -19,3 +19,20 @@ struct Todo{
     var isDeleted: Bool = false
     var dueDate: Date? = Calendar.current.date(byAdding: .day, value: 10, to: Date())!
 }
+
+extension Todo {
+    var deserialize: [String: Any] {
+        var d:[String: Any] = [
+            "name": self.name,
+            "isCompleted": self.isCompleted,
+            "notes": self.notes,
+            "hasDueDate": self.hasDueDate,
+            "isDeleted": self.isDeleted,
+        ]
+        if (self.hasDueDate == true)
+        {
+            d["dueDate"] = self.dueDate! as Date
+        }
+        return d
+    }
+}
