@@ -179,7 +179,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add"/>
                                 <connections>
-                                    <segue destination="xLy-BF-2sb" kind="show" id="2Jd-si-pkj"/>
+                                    <segue destination="xLy-BF-2sb" kind="show" identifier="AddTodoSegue" id="2Jd-si-pkj"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -408,10 +408,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="deleteBtn" destination="U8t-o9-tE5" id="4ZJ-n2-pdm"/>
                         <outlet property="descriptionTextView" destination="U0s-yv-wy4" id="lUw-BK-1fA"/>
                         <outlet property="dueDateTextField" destination="cAJ-hL-2Yt" id="xVK-Xn-sUc"/>
                         <outlet property="isCompletedSwitch" destination="28I-Xw-cg5" id="AoK-YY-ZaP"/>
+                        <outlet property="saveBtn" destination="3B4-bH-VoJ" id="a0h-gC-T4S"/>
                         <outlet property="taskNameTextField" destination="2Hq-me-K4h" id="N3f-uG-HQS"/>
+                        <outlet property="titleLabel" destination="N1U-4A-HHC" id="RK3-yU-d3L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R7H-oY-YiK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

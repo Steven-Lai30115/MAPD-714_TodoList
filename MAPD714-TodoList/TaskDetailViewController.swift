@@ -18,6 +18,10 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var dueDateTextField: UITextField!
     @IBOutlet weak var isCompletedSwitch: UISwitch!
     
+    @IBOutlet weak var deleteBtn: UIButton!
+    @IBOutlet weak var saveBtn: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +41,9 @@ class TaskDetailViewController: UIViewController {
             
             isCompletedSwitch.setOn(todo!.isCompleted, animated: true)
         } else {
+            deleteBtn.setTitle("Reset", for: .normal )
+            titleLabel.text = "Create task"
+            saveBtn.setTitle("Create", for: .normal)
             taskNameTextField!.text! = ""
             descriptionTextView!.text = ""
             isCompletedSwitch.isOn = false
