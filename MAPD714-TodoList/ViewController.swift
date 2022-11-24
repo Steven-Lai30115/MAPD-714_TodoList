@@ -10,9 +10,8 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var pastTaskTableView: UITableView!
     @IBOutlet var todoTableView: UITableView!
-    var todos: [Todo] = [
-        Todo(name: "Medication for C1-23"),
-    ]
+    var todos: [Todo] = []
+    
     var db: TodoDatabase = TodoDatabase()
     var pastTasks = [Todo]()
     
@@ -28,8 +27,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             switch event {
             case .next(let rows):
                 let todoList = rows as! [Todo]
-                self.todos = todoList.filter{ row in !row.isCompleted && !row.isDeleted}
-                self.pastTasks = todoList.filter{ row in row.isCompleted && !row.isDeleted}
+                self.pastTasks = todoList.filter {
+                        row in row.isCompleted || row.isDeleted
+                    }
+                self.todos = todoList.filter {
+                    row in !(row.isCompleted || row.isDeleted)
+                }
 
                 // reload table view after data is loaded
                 self.todoTableView.reloadData()

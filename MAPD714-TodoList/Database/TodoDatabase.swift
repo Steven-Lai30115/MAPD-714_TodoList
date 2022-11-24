@@ -42,6 +42,7 @@ class TodoDatabase : ObservableObject
                             isCompleted: row["isCompleted"] as! Bool,
                             notes: row["notes"] as! String,
                             hasDueDate: row["hasDueDate"] as! Bool,
+                            isDeleted: row["isDeleted"] as! Bool,
                             dueDate: date
                         )
                     }

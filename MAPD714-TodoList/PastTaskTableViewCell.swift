@@ -17,7 +17,7 @@ class PastTaskTableViewCell: UITableViewCell {
     
     func set(task: Todo){
         pastTaskLabel.attributedText = getPastTaskText(task: task)
-        
+        print(task, "?????")
 
         if(task.isCompleted){
             
@@ -36,7 +36,6 @@ class PastTaskTableViewCell: UITableViewCell {
                 string: task.name,
                 attributes: [.underlineStyle: NSUnderlineStyle.single]
             )
-            
             return attributedText
         }
         
