@@ -85,20 +85,40 @@ class TaskDetailViewController: UIViewController {
         
    
     @IBAction func onCancelButtonClick(_ sender: UIButton) {
-        if(inputChanged()){
-            let alert = UIAlertController(title: "Alert", message: "Are you sure to discard the changes?", preferredStyle: .alert)
-            // You can add actions using the following code
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Positive"), style: .default, handler: { _ in
-                self.navigationController?.popViewController(animated: true)
-            }))
-            // You can add actions using the following code
-            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Negative"), style: .default, handler: { _ in
-                print("Cancelled")
-            }))
+        if (!inputChanged())
+        {
+            self.navigationController?.popViewController(animated: true)
+            return
+        }
+        
+        let alert = UIAlertController(
+            title: "Alert",
+            message: "Are you sure to discard the changes?",
+            preferredStyle: .alert
+        )
+        
+        // You can add actions using the following code
+        alert.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("Yes", comment: "Positive"),
+                style: .default,
+                handler: {
+                    _ in self.navigationController?.popViewController(animated: true)
+                }
+            )
+        
+        )
+        // You can add actions using the following code
+        alert.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("No", comment: "Negative"),
+                style: .default,
+                handler: { _ in print("Cancelled") }
+            )
+        )
 
-            // This part of code inits alert view
-            present(alert, animated: true, completion: nil)
-        } else { self.navigationController?.popViewController(animated: true) }
+        // This part of code inits alert view
+        present(alert, animated: true, completion: nil)
 
     }
     
