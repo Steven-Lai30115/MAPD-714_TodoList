@@ -30,7 +30,10 @@ class TodoTableViewCell: UITableViewCell {
             if (now > dueDate) {
                 dateLabel = "[OVERDUE] "
                 dueDateLabel.textColor = UIColor.red
+            } else {
+                dueDateLabel.textColor = UIColor.black
             }
+            
             dateLabel = dateLabel + dateFormatter.string(from: todo.dueDate!)
             dueDateLabel.text = dateLabel
         }
