@@ -35,6 +35,7 @@ class TaskDetailViewController: UIViewController {
         if todo != nil {
             taskNameTextField.text = todo!.name
             descriptionTextView.text = todo!.notes
+            dueDateTextField.text = formatDate(date: todo!.dueDate!)
             
             // todo pass string
             //        dueDateTextField.text = String(todo?.dueDate)
@@ -74,6 +75,13 @@ class TaskDetailViewController: UIViewController {
         formatter.dateFormat = "MM-dd-yyyy HH:mm"
         return formatter.string(from: date)
     }
+    
+    func toDate(dateStr: String) -> Date
+    {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy HH:mm"
+        return formatter.date(from: dateStr)!
+    }
         
    
     @IBAction func onCancelButtonClick(_ sender: UIButton) {
@@ -100,6 +108,7 @@ class TaskDetailViewController: UIViewController {
                 todo!.name != taskNameTextField!.text!
                 || todo!.notes != descriptionTextView!.text
                 || todo!.isCompleted != isCompletedSwitch.isOn
+                || formatDate(date: todo!.dueDate!) != dueDateTextField.text
             )
         ) { return true }
         
@@ -109,6 +118,7 @@ class TaskDetailViewController: UIViewController {
                 taskNameTextField!.text!.isEmpty
                 || descriptionTextView!.text!.isEmpty
                 || isCompletedSwitch.isOn == true
+                || dueDateTextField.text!.isEmpty
             )
         ) { return true}
         
@@ -121,9 +131,9 @@ class TaskDetailViewController: UIViewController {
             print("input not change!!!!")
             return
         }
-        
+                
         var alertMessage: String
-        var create : Bool = todo == nil
+        let create : Bool = todo == nil
         
         if (!create)
         {
@@ -149,6 +159,14 @@ class TaskDetailViewController: UIViewController {
                     self.todo!.name = self.taskNameTextField!.text!
                     self.todo!.notes = self.descriptionTextView!.text
                     self.todo!.isCompleted = self.isCompletedSwitch.isOn
+                    if (!self.dueDateTextField.text!.isEmpty)
+                    {
+                        self.todo!.dueDate = self.toDate(
+                            dateStr: self.dueDateTextField.text!
+                        )
+                        self.todo!.hasDueDate = true
+                    }
+                    
                     // todo update or create
                     if ( create )
                     {
