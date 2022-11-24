@@ -57,7 +57,7 @@ class TodoDatabase : ObservableObject
     {
         let db = Firestore.firestore()
         var ref: DocumentReference? = nil
-        var data: [String: Any]  = todo.deserialize
+        var data: [String: Any]  = todo.serialize
         ref = db.collection(self.dbName)
             .addDocument(data: data) { err in
             if let err = err {
@@ -90,6 +90,6 @@ class TodoDatabase : ObservableObject
         Firestore.firestore()
         .collection(self.dbName)
         .document(todo.id)
-        .updateData(todo.deserialize)
+        .updateData(todo.serialize)
     }
 }

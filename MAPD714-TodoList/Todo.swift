@@ -21,7 +21,7 @@ struct Todo{
 }
 
 extension Todo {
-    var deserialize: [String: Any] {
+    var serialize: [String: Any] {
         var d:[String: Any] = [
             "name": self.name,
             "isCompleted": self.isCompleted,
