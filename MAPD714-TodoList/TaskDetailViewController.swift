@@ -77,38 +77,111 @@ class TaskDetailViewController: UIViewController {
         
    
     @IBAction func onCancelButtonClick(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if(inputChanged()){
+            let alert = UIAlertController(title: "Alert", message: "Are you sure to discard the changes?", preferredStyle: .alert)
+            // You can add actions using the following code
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Positive"), style: .default, handler: { _ in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            // You can add actions using the following code
+            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Negative"), style: .default, handler: { _ in
+                print("Cancelled")
+            }))
+
+            // This part of code inits alert view
+            present(alert, animated: true, completion: nil)
+        } else { self.navigationController?.popViewController(animated: true) }
+
     }
     
-    
+    func inputChanged() -> Bool {
+        if(todo != nil){
+            if(todo!.name != taskNameTextField!.text!
+                || todo!.notes != descriptionTextView!.text
+                || todo!.isCompleted != isCompletedSwitch.isOn)  { return true }
+        } else {
+            if( taskNameTextField!.text != "" || descriptionTextView!.text != "" || isCompletedSwitch.isOn == true )  { return true }
+        }
+        return false
+    }
     @IBAction func onSaveButtonClick(_ sender: UIButton) {
         // todo handle date
 //        todo!.dueDate = dueDateTextField.text
-        if(todo != nil){
-            todo!.name = taskNameTextField!.text!
-            todo!.notes = descriptionTextView!.text
-            todo!.isCompleted = isCompletedSwitch.isOn
-            db.updateTodo(todo!)
-            self.navigationController?.popViewController(animated: true)
+        if(todo != nil && inputChanged()){
+            let alert = UIAlertController(title: "Alert", message: "Are you sure to update the details?", preferredStyle: .alert)
+            // You can add actions using the following code
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Positive"), style: .default, handler: { _ in
+                self.todo!.name = self.taskNameTextField!.text!
+                self.todo!.notes = self.descriptionTextView!.text
+                self.todo!.isCompleted = self.isCompletedSwitch.isOn
+                self.db.updateTodo(self.todo!)
+                self.navigationController?.popViewController(animated: true)
+            }))
+            // You can add actions using the following code
+            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Negative"), style: .default, handler: { _ in
+                print("Cancelled")
+            }))
+
+            // This part of code inits alert view
+            present(alert, animated: true, completion: nil)
+
         } else {
-            todo = Todo()
-            todo!.name = taskNameTextField!.text!
-            todo!.notes = descriptionTextView!.text
-            todo!.isCompleted = isCompletedSwitch.isOn
-            db.insertTodo(todo!)
-            self.navigationController?.popViewController(animated: true)
+            if(inputChanged()) {
+                let alert = UIAlertController(title: "Alert", message: "Are you sure to create the task?", preferredStyle: .alert)
+                // You can add actions using the following code
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Positive"), style: .default, handler: { _ in
+                    self.todo = Todo()
+                    self.todo!.name = self.taskNameTextField!.text!
+                    self.todo!.notes = self.descriptionTextView!.text
+                    self.todo!.isCompleted = self.isCompletedSwitch.isOn
+                    self.db.insertTodo(self.todo!)
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                // You can add actions using the following code
+                alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Negative"), style: .default, handler: { _ in
+                    print("Cancelled")
+                }))
+
+                // This part of code inits alert view
+                present(alert, animated: true, completion: nil)
+            }
         }
     }
     
     
     @IBAction func onDeleteButtonClick(_ sender: UIButton) {
-        if(todo != nil) {
-            db.markAsDelete(todo!.id, true)
-            self.navigationController?.popViewController(animated: true)
+        if(todo != nil && inputChanged()){
+            let alert = UIAlertController(title: "Alert", message: "Are you sure to delete the task?", preferredStyle: .alert)
+            // You can add actions using the following code
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Positive"), style: .default, handler: { _ in
+                self.db.markAsDelete(self.todo!.id, true)
+                self.navigationController?.popViewController(animated: true)
+            }))
+            // You can add actions using the following code
+            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Negative"), style: .default, handler: { _ in
+                print("Cancelled")
+            }))
+
+            // This part of code inits alert view
+            present(alert, animated: true, completion: nil)
+
         } else {
-            taskNameTextField!.text! = ""
-            descriptionTextView!.text = ""
-            isCompletedSwitch.isOn = false
+            if( inputChanged()) {
+                let alert = UIAlertController(title: "Alert", message: "Are you sure to reset the details?", preferredStyle: .alert)
+                // You can add actions using the following code
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Positive"), style: .default, handler: { _ in
+                    self.taskNameTextField!.text! = ""
+                    self.descriptionTextView!.text = ""
+                    self.isCompletedSwitch.isOn = false
+                }))
+                // You can add actions using the following code
+                alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Negative"), style: .default, handler: { _ in
+                    print("Cancelled")
+                }))
+
+                // This part of code inits alert view
+                present(alert, animated: true, completion: nil)
+            }
         }
     }
     
