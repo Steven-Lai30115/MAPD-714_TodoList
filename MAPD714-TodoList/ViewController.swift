@@ -124,7 +124,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(segue.identifier)
         if segue.identifier == "TaskDetailSegue" {
             print("Update todo")
             let button = sender as! UIButton
@@ -133,8 +132,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             detailController.todo = cell.todo
         } else if segue.identifier == "AddTodoSegue" {
             print("Add todo")
-            let button = sender as! UIButton
-            let detailController = segue.destination as! TaskDetailViewController
+            _ = sender as! UIButton
+            _ = segue.destination as! TaskDetailViewController
         }
         
     }

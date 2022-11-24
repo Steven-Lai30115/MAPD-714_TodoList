@@ -58,7 +58,7 @@ class TodoDatabase : ObservableObject
     {
         let db = Firestore.firestore()
         var ref: DocumentReference? = nil
-        var data: [String: Any]  = todo.serialize
+        let data: [String: Any]  = todo.serialize
         ref = db.collection(self.dbName)
             .addDocument(data: data) { err in
             if let err = err {
