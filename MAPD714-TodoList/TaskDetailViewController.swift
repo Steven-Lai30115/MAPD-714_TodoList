@@ -95,13 +95,23 @@ class TaskDetailViewController: UIViewController {
     }
     
     func inputChanged() -> Bool {
-        if(todo != nil){
-            if(todo!.name != taskNameTextField!.text!
+        if ( todo != nil
+            && (
+                todo!.name != taskNameTextField!.text!
                 || todo!.notes != descriptionTextView!.text
-                || todo!.isCompleted != isCompletedSwitch.isOn)  { return true }
-        } else {
-            if( taskNameTextField!.text != "" || descriptionTextView!.text != "" || isCompletedSwitch.isOn == true )  { return true }
-        }
+                || todo!.isCompleted != isCompletedSwitch.isOn
+            )
+        ) { return true }
+        
+        if (
+            todo == nil
+            && (
+                taskNameTextField!.text!.isEmpty
+                || descriptionTextView!.text!.isEmpty
+                || isCompletedSwitch.isOn == true
+            )
+        ) { return true}
+        
         return false
     }
 

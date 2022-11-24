@@ -17,7 +17,6 @@ class PastTaskTableViewCell: UITableViewCell {
     
     func set(task: Todo){
         pastTaskLabel.attributedText = getPastTaskText(task: task)
-        print(task, "?????")
 
         if(task.isCompleted){
             
