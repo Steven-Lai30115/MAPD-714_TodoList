@@ -102,7 +102,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
                 
                 let doneAction = UIContextualAction(style: .normal, title: "Done") { _, _, completion in
-                    var todo =  self.todos[indexPath.row]
+                    let todo =  self.todos[indexPath.row]
                     self.db.markAsComplete(todo.id, true)
                     self.pastTaskTableView.reloadData()
                     self.todoTableView.reloadData()

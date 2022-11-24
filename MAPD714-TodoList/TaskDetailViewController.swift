@@ -104,48 +104,67 @@ class TaskDetailViewController: UIViewController {
         }
         return false
     }
+
     @IBAction func onSaveButtonClick(_ sender: UIButton) {
-        // todo handle date
-//        todo!.dueDate = dueDateTextField.text
-        if(todo != nil && inputChanged()){
-            let alert = UIAlertController(title: "Alert", message: "Are you sure to update the details?", preferredStyle: .alert)
-            // You can add actions using the following code
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Positive"), style: .default, handler: { _ in
-                self.todo!.name = self.taskNameTextField!.text!
-                self.todo!.notes = self.descriptionTextView!.text
-                self.todo!.isCompleted = self.isCompletedSwitch.isOn
-                self.db.updateTodo(self.todo!)
-                self.navigationController?.popViewController(animated: true)
-            }))
-            // You can add actions using the following code
-            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Negative"), style: .default, handler: { _ in
-                print("Cancelled")
-            }))
-
-            // This part of code inits alert view
-            present(alert, animated: true, completion: nil)
-
-        } else {
-            if(inputChanged()) {
-                let alert = UIAlertController(title: "Alert", message: "Are you sure to create the task?", preferredStyle: .alert)
-                // You can add actions using the following code
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Positive"), style: .default, handler: { _ in
-                    self.todo = Todo()
+        
+        if (!inputChanged()) {
+            print("input not change!!!!")
+            return
+        }
+        
+        var alertMessage: String
+        var create : Bool = todo == nil
+        
+        if (!create)
+        {
+            alertMessage = "Are you sure to update the details?"
+        }
+        else
+        {
+            todo = Todo()
+            alertMessage = "Are you sure to create the task?"
+        }
+        
+        let alert = UIAlertController(
+            title: "Alert",
+            message: alertMessage,
+            preferredStyle: .alert
+        )
+        
+        let confirmAction = UIAlertAction(
+            title: NSLocalizedString("Yes", comment: "Positive"),
+            style: .default,
+            handler:
+                { _ in
                     self.todo!.name = self.taskNameTextField!.text!
                     self.todo!.notes = self.descriptionTextView!.text
                     self.todo!.isCompleted = self.isCompletedSwitch.isOn
-                    self.db.insertTodo(self.todo!)
+                    // todo update or create
+                    if ( create )
+                    {
+                        self.db.insertTodo(self.todo!)
+                    } else
+                    {
+                        self.db.updateTodo(self.todo!)
+                    }
                     self.navigationController?.popViewController(animated: true)
-                }))
-                // You can add actions using the following code
-                alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Negative"), style: .default, handler: { _ in
-                    print("Cancelled")
-                }))
-
-                // This part of code inits alert view
-                present(alert, animated: true, completion: nil)
-            }
-        }
+                }
+            )
+        
+        let cancelAction = UIAlertAction(
+            title: NSLocalizedString("No", comment: "Negative"),
+            style: .default,
+            handler: { _ in print("Cancelled") }
+        )
+        
+        // You can add actions using the following code
+        alert.addAction(confirmAction)
+        
+        // You can add actions using the following code
+        alert.addAction(cancelAction)
+        
+        // This part of code inits alert view
+        present(alert, animated: true, completion: nil)
     }
     
     
