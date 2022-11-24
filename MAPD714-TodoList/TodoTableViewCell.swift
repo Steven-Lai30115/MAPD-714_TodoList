@@ -20,6 +20,20 @@ class TodoTableViewCell: UITableViewCell {
     
     func set(todo: Todo){
         nameLabel.text = todo.name
+        
+        if (todo.hasDueDate) {
+            let now = Date()
+            let dueDate = todo.dueDate!
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYY-MM-dd hh:mm"
+            var dateLabel = ""
+            if (now > dueDate) {
+                dateLabel = "[OVERDUE] "
+                dueDateLabel.textColor = UIColor.red
+            }
+            dateLabel = dateLabel + dateFormatter.string(from: todo.dueDate!)
+            dueDateLabel.text = dateLabel
+        }
         self.todo = todo
     }
     
