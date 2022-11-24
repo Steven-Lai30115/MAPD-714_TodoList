@@ -9,7 +9,7 @@ import UIKit
 
 class TaskDetailViewController: UIViewController {
     
-    var todo: Todo = Todo()
+    var todo: Todo? = nil
     var db = TodoDatabase()
 
     @IBOutlet weak var taskNameTextField: UITextField!
@@ -27,14 +27,20 @@ class TaskDetailViewController: UIViewController {
         
         
         setDatePicker()
-        
-        taskNameTextField.text = todo.name
-        descriptionTextView.text = todo.notes
-        
-        // todo pass string
-//        dueDateTextField.text = String(todo?.dueDate)
-        
-        isCompletedSwitch.setOn(todo.isCompleted, animated: true)
+       
+        if todo != nil {
+            taskNameTextField.text = todo!.name
+            descriptionTextView.text = todo!.notes
+            
+            // todo pass string
+            //        dueDateTextField.text = String(todo?.dueDate)
+            
+            isCompletedSwitch.setOn(todo!.isCompleted, animated: true)
+        } else {
+            taskNameTextField!.text! = ""
+            descriptionTextView!.text = ""
+            isCompletedSwitch.isOn = false
+        }
         
     }
     
@@ -70,18 +76,33 @@ class TaskDetailViewController: UIViewController {
     
     @IBAction func onSaveButtonClick(_ sender: UIButton) {
         // todo handle date
-//        todo.dueDate = dueDateTextField.text
-        todo.name = taskNameTextField!.text!
-        todo.notes = descriptionTextView!.text
-        todo.isCompleted = isCompletedSwitch.isOn
-        db.updateTodo(todo)
-        self.navigationController?.popViewController(animated: true)
+//        todo!.dueDate = dueDateTextField.text
+        if(todo != nil){
+            todo!.name = taskNameTextField!.text!
+            todo!.notes = descriptionTextView!.text
+            todo!.isCompleted = isCompletedSwitch.isOn
+            db.updateTodo(todo!)
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            todo = Todo()
+            todo!.name = taskNameTextField!.text!
+            todo!.notes = descriptionTextView!.text
+            todo!.isCompleted = isCompletedSwitch.isOn
+            db.insertTodo(todo!)
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     
     @IBAction func onDeleteButtonClick(_ sender: UIButton) {
-        db.markAsDelete(todo.id, true)
-        self.navigationController?.popViewController(animated: true)
+        if(todo != nil) {
+            db.markAsDelete(todo!.id, true)
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            taskNameTextField!.text! = ""
+            descriptionTextView!.text = ""
+            isCompletedSwitch.isOn = false
+        }
     }
     
 }
