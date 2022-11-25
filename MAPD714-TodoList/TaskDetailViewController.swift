@@ -232,40 +232,51 @@ class TaskDetailViewController: UIViewController {
     
     
     @IBAction func onDeleteButtonClick(_ sender: UIButton) {
-        if(todo != nil){
-            let alert = UIAlertController(title: "Alert", message: "Are you sure to delete the task?", preferredStyle: .alert)
-            // You can add actions using the following code
-            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Positive"), style: .default, handler: { _ in
-                self.db.markAsDelete(self.todo!.id, true)
-                self.navigationController?.popViewController(animated: true)
-            }))
-            // You can add actions using the following code
-            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Negative"), style: .default, handler: { _ in
-                print("Cancelled")
-            }))
-
-            // This part of code inits alert view
-            present(alert, animated: true, completion: nil)
-
-        } else {
-            if( inputChanged()) {
-                let alert = UIAlertController(title: "Alert", message: "Are you sure to reset the details?", preferredStyle: .alert)
-                // You can add actions using the following code
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Positive"), style: .default, handler: { _ in
+        var alertMsg : String
+        var action : UIAlertAction
+        if (todo != nil)
+        {
+            alertMsg = "Are you sure to delete the task?"
+            action = UIAlertAction(
+                title: NSLocalizedString("Yes", comment: "Positive"),
+                style: .default,
+                handler: { _ in
+                    self.db.markAsDelete(self.todo!.id, true)
+                    self.navigationController?.popViewController(animated: true)
+                }
+            )
+        }
+        else
+        {
+            alertMsg = "Are you sure to reset the details?"
+            action = UIAlertAction(
+                title: NSLocalizedString("Yes", comment: "Positive"),
+                style: .default,
+                handler: { _ in
                     self.taskNameTextField!.text! = ""
                     self.descriptionTextView!.text = ""
                     self.isCompletedSwitch.isOn = false
                     self.hasDueDateSwitch.isOn = false
-                }))
-                // You can add actions using the following code
-                alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Negative"), style: .default, handler: { _ in
-                    print("Cancelled")
-                }))
-
-                // This part of code inits alert view
-                present(alert, animated: true, completion: nil)
-            }
+                }
+            )
         }
+        
+        let alert = UIAlertController(
+            title: "Alert",
+            message: alertMsg,
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(
+            UIAlertAction(
+                title: NSLocalizedString("No", comment: "Negative"),
+                style: .default,
+                handler: { _ in print("Cancelled") }
+            )
+        )
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
     
 }
