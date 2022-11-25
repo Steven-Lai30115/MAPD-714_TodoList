@@ -165,10 +165,32 @@ class TaskDetailViewController: UIViewController {
             print("input not change!!!!")
             return
         }
+        
+        // validate due date if hasDueDateSwitch is on
+        if ( self.hasDueDateSwitch.isOn && self.dueDateTextField.text!.isEmpty)
+        {
+            let warnDueDateAlert = UIAlertController(
+                title: "Alert",
+                message: "Please Enter Due Date",
+                preferredStyle: .alert
+            )
+            
+            let confirmAction = UIAlertAction(
+                title: NSLocalizedString("OK!", comment: "Confirm"),
+                style: .default,
+                handler: { _ in print("Confirm") }
+            )
+            
+            // You can add actions using the following code
+            warnDueDateAlert.addAction(confirmAction)
+            present(warnDueDateAlert, animated: true, completion: nil)
+            return
+        }
                 
         var alertMessage: String
         let create : Bool = todo == nil
         
+        // validate create / update use case
         if (!create)
         {
             alertMessage = "Are you sure to update the details?"
