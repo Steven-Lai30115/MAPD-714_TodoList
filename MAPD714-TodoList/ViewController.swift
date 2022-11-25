@@ -99,16 +99,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, completion in
                     let todo =  self.todos[indexPath.row]
                     self.db.markAsDelete(todo.id, true)
-                    self.pastTaskTableView.reloadData()
-                    self.todoTableView.reloadData()
+                    //self.pastTaskTableView.reloadData()
+                   // self.todoTableView.reloadData()
                     completion(true)
                 }
                 
                 let doneAction = UIContextualAction(style: .normal, title: "Done") { _, _, completion in
                     let todo =  self.todos[indexPath.row]
                     self.db.markAsComplete(todo.id, true)
-                    self.pastTaskTableView.reloadData()
-                    self.todoTableView.reloadData()
+                   //self.pastTaskTableView.reloadData()
+                    //self.todoTableView.reloadData()
                     completion(true)
                 }
                 doneAction.backgroundColor = .systemGreen
