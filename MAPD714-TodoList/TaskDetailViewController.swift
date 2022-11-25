@@ -243,7 +243,10 @@ class TaskDetailViewController: UIViewController {
         let cancelAction = UIAlertAction(
             title: NSLocalizedString("No", comment: "Negative"),
             style: .default,
-            handler: { _ in print("Cancelled") }
+            handler: {
+                _ in print("Cancelled")
+                self.todo = nil
+            }
         )
         
         // You can add actions using the following code
@@ -283,6 +286,7 @@ class TaskDetailViewController: UIViewController {
                     self.descriptionTextView!.text = ""
                     self.isCompletedSwitch.isOn = false
                     self.hasDueDateSwitch.isOn = false
+                    self.dueDateTextField.text = ""
                 }
             )
         }
