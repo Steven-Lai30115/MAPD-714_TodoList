@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+// extend UITextField class, draw a underline
 extension UITextField {
     
     func underlined() {
@@ -22,6 +22,7 @@ extension UITextField {
 
 }
 
+// extend UITextView class, draw a underline
 extension UITextView {
     func underlined() {
         let border = CALayer()

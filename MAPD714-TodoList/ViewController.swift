@@ -21,6 +21,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         todoTableView.dataSource = self
         todoTableView.delegate = self
         
+        // getting the data from firebase and keep observing data changes
         // todo should be disposal
         var _ = self.db.getTodoList().subscribe
         { event in
@@ -43,6 +44,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
           }
     }
 
+    // set tableView's row initial height
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch tableView {
             case pastTaskTableView:
@@ -65,6 +67,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    // based on two different tableview, create it own view cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch tableView {
             case pastTaskTableView:
@@ -92,7 +95,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+    // display button when swipe left & set the action when done button and delete button clicked
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         switch tableView {
             case todoTableView:
@@ -123,6 +126,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    // segue passing selected task to TaskDetailView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TaskDetailSegue" {
             print("Update todo")

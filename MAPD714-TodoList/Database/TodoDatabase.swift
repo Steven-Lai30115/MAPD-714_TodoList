@@ -14,7 +14,7 @@ import RxSwift
 class TodoDatabase : ObservableObject
 {
     var dbName = "todos";
-    
+    // get todo tasks on firebase
     func getTodoList() -> Observable<[Any]>
     {
         let db = Firestore.firestore()
@@ -68,7 +68,7 @@ class TodoDatabase : ObservableObject
             }
         }
     }
-    
+    // update task's info to completed
     func markAsComplete(_ todoId: String, _ isCompleted: Bool)
     {
         Firestore.firestore()
@@ -76,7 +76,7 @@ class TodoDatabase : ObservableObject
         .document(todoId)
         .updateData(["isCompleted": isCompleted])
     }
-    
+    // update task's info to deleted
     func markAsDelete(_ todoId: String, _ isDeleted: Bool)
     {
         Firestore.firestore()

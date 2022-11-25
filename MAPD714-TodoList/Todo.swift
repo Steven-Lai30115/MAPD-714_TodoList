@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// TodoTask object
 struct Todo{
     // firebase id
     var id: String = ""
