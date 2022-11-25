@@ -23,6 +23,7 @@ class PastTaskTableViewCell: UITableViewCell {
             checkMarkImage.image = UIImage(named: "checkMark")
             pastTaskLabel.textColor = .systemGreen
         } else {
+            checkMarkImage.image = nil
             pastTaskLabel.textColor = .systemGray2
         }
         
