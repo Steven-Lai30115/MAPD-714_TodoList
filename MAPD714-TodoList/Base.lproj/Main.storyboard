@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hg9-V2-hS4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hg9-V2-hS4">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -55,6 +55,10 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vd8-AN-rJr" userLabel="DueDateLabel">
                                                     <rect key="frame" x="20" y="38" width="277" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="tvW-gy-Zby"/>
+                                                        <constraint firstAttribute="width" constant="277" id="vyn-f5-KKv"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -72,14 +76,13 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Vd8-AN-rJr" firstAttribute="top" secondItem="FNj-eH-ADP" secondAttribute="bottom" constant="6" id="K6k-IE-egX"/>
-                                                <constraint firstItem="FNj-eH-ADP" firstAttribute="leading" secondItem="Vd8-AN-rJr" secondAttribute="leading" id="MDy-Dg-HaG"/>
-                                                <constraint firstItem="FNj-eH-ADP" firstAttribute="trailing" secondItem="Vd8-AN-rJr" secondAttribute="trailing" id="Qdt-Ty-Svm"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Vd8-AN-rJr" secondAttribute="bottom" constant="50" id="YGf-TR-UEL"/>
+                                                <constraint firstItem="Vd8-AN-rJr" firstAttribute="top" secondItem="FNj-eH-ADP" secondAttribute="bottom" constant="6" id="Psm-cK-X7j"/>
+                                                <constraint firstItem="4qg-i9-fO3" firstAttribute="leading" secondItem="Vd8-AN-rJr" secondAttribute="trailing" constant="32" id="X2B-L1-TKN"/>
                                                 <constraint firstItem="FNj-eH-ADP" firstAttribute="leading" secondItem="ZLm-u2-CbQ" secondAttribute="leadingMargin" id="Yh7-0Y-f3l"/>
                                                 <constraint firstItem="4qg-i9-fO3" firstAttribute="leading" secondItem="FNj-eH-ADP" secondAttribute="trailing" constant="32" id="ZoZ-fL-Kyg"/>
                                                 <constraint firstItem="FNj-eH-ADP" firstAttribute="baseline" secondItem="4qg-i9-fO3" secondAttribute="firstBaseline" id="bQ6-E3-u4E"/>
                                                 <constraint firstItem="4qg-i9-fO3" firstAttribute="top" secondItem="ZLm-u2-CbQ" secondAttribute="topMargin" constant="10" id="rfZ-iy-Z4T"/>
+                                                <constraint firstItem="Vd8-AN-rJr" firstAttribute="leading" secondItem="ZLm-u2-CbQ" secondAttribute="leadingMargin" id="ySh-Xf-rEb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
