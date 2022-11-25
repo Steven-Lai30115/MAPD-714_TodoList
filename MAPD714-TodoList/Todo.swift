@@ -17,7 +17,7 @@ struct Todo{
     var notes: String = ""
     var hasDueDate: Bool = false
     var isDeleted: Bool = false
-    var dueDate: Date? = Calendar.current.date(byAdding: .day, value: 10, to: Date())!
+    var dueDate: Date?
 }
 
 extension Todo {
