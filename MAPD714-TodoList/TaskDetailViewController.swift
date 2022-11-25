@@ -18,6 +18,7 @@ class TaskDetailViewController: UIViewController {
     @IBOutlet weak var dueDateTextField: UITextField!
     @IBOutlet weak var isCompletedSwitch: UISwitch!
     
+    @IBOutlet weak var hasDueDateSwitch: UISwitch!
     @IBOutlet weak var deleteBtn: UIButton!
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
@@ -35,12 +36,13 @@ class TaskDetailViewController: UIViewController {
         if todo != nil {
             taskNameTextField.text = todo!.name
             descriptionTextView.text = todo!.notes
-            dueDateTextField.text = formatDate(date: todo!.dueDate!)
             
             // todo pass string
             //        dueDateTextField.text = String(todo?.dueDate)
             
             isCompletedSwitch.setOn(todo!.isCompleted, animated: true)
+            hasDueDateSwitch.setOn(todo!.hasDueDate, animated: true)
+            if(todo!.hasDueDate){ dueDateTextField.text = formatDate(date: todo!.dueDate!)}
         } else {
             deleteBtn.setTitle("Reset", for: .normal )
             titleLabel.text = "Create task"
@@ -48,6 +50,7 @@ class TaskDetailViewController: UIViewController {
             taskNameTextField!.text! = ""
             descriptionTextView!.text = ""
             isCompletedSwitch.isOn = false
+            hasDueDateSwitch.isOn = false
         }
         
     }
@@ -83,7 +86,16 @@ class TaskDetailViewController: UIViewController {
         return formatter.date(from: dateStr)!
     }
         
-   
+    @IBAction func onHasDueDateChanged(_ sender: UISwitch) {
+        if(!sender.isOn) {
+            dueDateTextField.text = ""
+            todo?.dueDate = nil
+        }
+    }
+    
+    @IBAction func onDueDateEntry(_ sender: UITextField) {
+        if(!hasDueDateSwitch.isOn) { hasDueDateSwitch.isOn = true }
+    }
     @IBAction func onCancelButtonClick(_ sender: UIButton) {
         if (!inputChanged())
         {
@@ -128,7 +140,8 @@ class TaskDetailViewController: UIViewController {
                 todo!.name != taskNameTextField!.text!
                 || todo!.notes != descriptionTextView!.text
                 || todo!.isCompleted != isCompletedSwitch.isOn
-                || formatDate(date: todo!.dueDate!) != dueDateTextField.text
+                || todo!.hasDueDate != hasDueDateSwitch.isOn
+                || ( todo!.hasDueDate && formatDate(date: todo!.dueDate!) != dueDateTextField.text )
             )
         ) { return true }
         
@@ -138,6 +151,7 @@ class TaskDetailViewController: UIViewController {
                 taskNameTextField!.text!.isEmpty
                 || descriptionTextView!.text!.isEmpty
                 || isCompletedSwitch.isOn == true
+                || hasDueDateSwitch.isOn == true
                 || dueDateTextField.text!.isEmpty
             )
         ) { return true}
@@ -179,13 +193,14 @@ class TaskDetailViewController: UIViewController {
                     self.todo!.name = self.taskNameTextField!.text!
                     self.todo!.notes = self.descriptionTextView!.text
                     self.todo!.isCompleted = self.isCompletedSwitch.isOn
+                    self.todo!.hasDueDate = self.hasDueDateSwitch.isOn
                     if (!self.dueDateTextField.text!.isEmpty)
                     {
                         self.todo!.dueDate = self.toDate(
                             dateStr: self.dueDateTextField.text!
                         )
                         self.todo!.hasDueDate = true
-                    }
+                    } else { self.todo!.hasDueDate = false }
                     
                     // todo update or create
                     if ( create )
@@ -217,7 +232,7 @@ class TaskDetailViewController: UIViewController {
     
     
     @IBAction func onDeleteButtonClick(_ sender: UIButton) {
-        if(todo != nil && inputChanged()){
+        if(todo != nil){
             let alert = UIAlertController(title: "Alert", message: "Are you sure to delete the task?", preferredStyle: .alert)
             // You can add actions using the following code
             alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Positive"), style: .default, handler: { _ in
@@ -240,6 +255,7 @@ class TaskDetailViewController: UIViewController {
                     self.taskNameTextField!.text! = ""
                     self.descriptionTextView!.text = ""
                     self.isCompletedSwitch.isOn = false
+                    self.hasDueDateSwitch.isOn = false
                 }))
                 // You can add actions using the following code
                 alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Negative"), style: .default, handler: { _ in
