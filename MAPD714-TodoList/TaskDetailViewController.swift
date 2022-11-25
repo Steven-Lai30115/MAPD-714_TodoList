@@ -166,7 +166,7 @@ class TaskDetailViewController: UIViewController {
             return
         }
         
-        // validate due date if hasDueDateSwitch is on
+        // validate input is fills
         if (
             taskNameTextField!.text!.isEmpty
             || descriptionTextView!.text!.isEmpty
