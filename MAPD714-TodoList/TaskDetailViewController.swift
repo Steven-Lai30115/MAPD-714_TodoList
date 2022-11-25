@@ -167,11 +167,15 @@ class TaskDetailViewController: UIViewController {
         }
         
         // validate due date if hasDueDateSwitch is on
-        if ( self.hasDueDateSwitch.isOn && self.dueDateTextField.text!.isEmpty)
+        if (
+            taskNameTextField!.text!.isEmpty
+            || descriptionTextView!.text!.isEmpty
+            || (hasDueDateSwitch.isOn == true && dueDateTextField.text!.isEmpty)
+        )
         {
             let warnDueDateAlert = UIAlertController(
                 title: "Alert",
-                message: "Please Enter Due Date",
+                message: "Please Fill All The Blank Fields",
                 preferredStyle: .alert
             )
             
