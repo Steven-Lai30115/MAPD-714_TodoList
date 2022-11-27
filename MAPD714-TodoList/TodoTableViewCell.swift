@@ -37,6 +37,9 @@ class TodoTableViewCell: UITableViewCell {
             dateLabel = dateLabel + dateFormatter.string(from: todo.dueDate!)
             dueDateLabel.text = dateLabel
         }
+        else{
+            dueDateLabel.text = ""
+        }
         self.todo = todo
     }
     
