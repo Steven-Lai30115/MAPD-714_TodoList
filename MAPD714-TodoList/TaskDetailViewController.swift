@@ -30,7 +30,6 @@ class TaskDetailViewController: UIViewController {
         descriptionTextView.underlined()
         dueDateTextField.underlined()
         
-        
         setDatePicker()
        
         if todo != nil {
@@ -96,6 +95,7 @@ class TaskDetailViewController: UIViewController {
     @IBAction func onDueDateEntry(_ sender: UITextField) {
         if(!hasDueDateSwitch.isOn) { hasDueDateSwitch.isOn = true }
     }
+    
     @IBAction func onCancelButtonClick(_ sender: UIButton) {
         if (!inputChanged())
         {

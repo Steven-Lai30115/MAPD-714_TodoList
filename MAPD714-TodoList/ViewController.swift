@@ -11,6 +11,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var pastTaskTableView: UITableView!
     @IBOutlet var todoTableView: UITableView!
     var todos: [Todo] = []
+    var selectedTodo: Todo? = nil
     
     var db: TodoDatabase = TodoDatabase()
     var pastTasks = [Todo]()
@@ -71,9 +72,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch tableView {
             case pastTaskTableView:
-            
                 let cell = tableView.dequeueReusableCell(withIdentifier: "pastTask cell", for: indexPath) as! PastTaskTableViewCell
                 cell.set(task: pastTasks[indexPath.row])
+            
                 return cell
                 
             case todoTableView:
@@ -81,6 +82,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let todo = todos[indexPath.row]
                 _ = DateFormatter()
                 cell.set(todo: todo)
+            
+//                let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+//                animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+//                animation.duration = 0.6
+//                animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
+//                cell.layer.add(animation, forKey: "shake")
+            
+                selectedTodo = todo
+                let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.swipedLeft(sender:)))
+                cell.addGestureRecognizer(swipeLeft)
+            
                 return cell
                 
             default:
@@ -95,6 +107,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
+    @objc func swipedLeft(sender: UITapGestureRecognizer)
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TaskDetailViewController") as! TaskDetailViewController
+        vc.todo = selectedTodo
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     // display button when swipe left & set the action when done button and delete button clicked
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         switch tableView {
