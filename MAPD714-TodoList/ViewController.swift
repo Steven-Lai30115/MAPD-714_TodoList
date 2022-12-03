@@ -117,7 +117,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 doneAction.backgroundColor = .systemGreen
                 
                 let config = UISwipeActionsConfiguration(actions: [deleteAction, doneAction])
-                config.performsFirstActionWithFullSwipe = false
+//                config.performsFirstActionWithFullSwipe = false
                 return config
             
             default:
