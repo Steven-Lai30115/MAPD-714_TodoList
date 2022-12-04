@@ -120,6 +120,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //                config.performsFirstActionWithFullSwipe = false
                 return config
             
+            case pastTaskTableView :
+                let doneAction = UIContextualAction(style: .normal, title: "Undone") { _, _, completion in
+                    let todo =  self.pastTasks[indexPath.row]
+                    self.db.markAsComplete(todo.id, false)
+                    completion(true)
+                }
+                doneAction.backgroundColor = .systemYellow
+                let config = UISwipeActionsConfiguration(actions: [doneAction])
+                config.performsFirstActionWithFullSwipe = false
+                return config
             default:
                 let config = UISwipeActionsConfiguration(actions: [])
                 return config
