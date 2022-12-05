@@ -100,7 +100,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var actionList: [UIContextualAction] = []
         if tableView == todoTableView {
             
-            let editAction = UIContextualAction(style: .normal, title: "") { _, _, completion in
+            let editAction = UIContextualAction(style: .normal, title: "Edit") { _, _, completion in
                 let todo =  self.todos[indexPath.row]
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "TaskDetailViewController") as! TaskDetailViewController
                 vc.todo = todo
@@ -116,7 +116,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 completion(true)
             }
             
-            editAction.backgroundColor = .blue
+            editAction.backgroundColor = .systemBlue
             actionList.append(editAction)
         }
         
@@ -144,7 +144,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     //self.todoTableView.reloadData()
                     completion(true)
                 }
-                doneAction.backgroundColor = .systemGreen
+            doneAction.backgroundColor = .systemYellow
                 
                 let config = UISwipeActionsConfiguration(actions: [deleteAction, doneAction])
 //                config.performsFirstActionWithFullSwipe = false
