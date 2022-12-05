@@ -19,7 +19,7 @@
 		7AD478C2291C33C2004B4043 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AD478C0291C33C2004B4043 /* LaunchScreen.storyboard */; };
 		7AD478CC291C3F5C004B4043 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD478CB291C3F5C004B4043 /* Todo.swift */; };
 		B1DEEBAD292C034B0002AFE4 /* TodoDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DEEBAC292C034B0002AFE4 /* TodoDatabase.swift */; };
-		B1DEEBAF292C06350002AFE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1DEEBAE292C06340002AFE4 /* GoogleService-Info.plist */; };
+		B1EC30A1293DE123004CF083 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1EC30A0293DE123004CF083 /* GoogleService-Info.plist */; };
 		E68A6D2640DBC52F960FA7D9 /* Pods_MAPD714_TodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF92DB53E7ABA0D0595A2DE /* Pods_MAPD714_TodoList.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +41,7 @@
 		7AD478CB291C3F5C004B4043 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		7EF92DB53E7ABA0D0595A2DE /* Pods_MAPD714_TodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAPD714_TodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1DEEBAC292C034B0002AFE4 /* TodoDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDatabase.swift; sourceTree = "<group>"; };
-		B1DEEBAE292C06340002AFE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B1EC30A0293DE123004CF083 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,11 +91,11 @@
 				7AD478B5291C33C2004B4043 /* AppDelegate.swift */,
 				7AD478B7291C33C2004B4043 /* SceneDelegate.swift */,
 				7AD478B9291C33C2004B4043 /* ViewController.swift */,
+				B1EC30A0293DE123004CF083 /* GoogleService-Info.plist */,
 				7A230486291C7A3C00F299E0 /* TodoTableViewCell.swift */,
 				7A23048C291E095200F299E0 /* PastTaskTableViewCell.swift */,
 				7A23048E291EA4BE00F299E0 /* TaskDetailViewController.swift */,
 				7AD478BB291C33C2004B4043 /* Main.storyboard */,
-				B1DEEBAE292C06340002AFE4 /* GoogleService-Info.plist */,
 				7AD478BE291C33C2004B4043 /* Assets.xcassets */,
 				7AD478C0291C33C2004B4043 /* LaunchScreen.storyboard */,
 				7AD478C3291C33C2004B4043 /* Info.plist */,
@@ -186,7 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AD478C2291C33C2004B4043 /* LaunchScreen.storyboard in Resources */,
-				B1DEEBAF292C06350002AFE4 /* GoogleService-Info.plist in Resources */,
+				B1EC30A1293DE123004CF083 /* GoogleService-Info.plist in Resources */,
 				7AD478BF291C33C2004B4043 /* Assets.xcassets in Resources */,
 				7AD478BD291C33C2004B4043 /* Main.storyboard in Resources */,
 			);

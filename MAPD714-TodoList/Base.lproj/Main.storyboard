@@ -44,7 +44,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TaskName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNj-eH-ADP" userLabel="TitleLabel">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="TaskName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNj-eH-ADP" userLabel="TitleLabel">
                                                     <rect key="frame" x="20" y="11" width="277" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="277" id="C1q-6T-tSM"/>
@@ -53,7 +53,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vd8-AN-rJr" userLabel="DueDateLabel">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vd8-AN-rJr" userLabel="DueDateLabel">
                                                     <rect key="frame" x="20" y="38" width="277" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="tvW-gy-Zby"/>
@@ -63,31 +63,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qg-i9-fO3" userLabel="EditButton">
-                                                    <rect key="frame" x="329" y="21" width="45" height="33"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="EditButton"/>
-                                                    <connections>
-                                                        <action selector="onEditButtonClick:" destination="olc-A2-tdq" eventType="touchUpInside" id="3cC-Cu-wnV"/>
-                                                        <segue destination="xLy-BF-2sb" kind="show" identifier="TaskDetailSegue" id="lU3-AR-Up0"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Vd8-AN-rJr" firstAttribute="top" secondItem="FNj-eH-ADP" secondAttribute="bottom" constant="6" id="Psm-cK-X7j"/>
-                                                <constraint firstItem="4qg-i9-fO3" firstAttribute="leading" secondItem="Vd8-AN-rJr" secondAttribute="trailing" constant="32" id="X2B-L1-TKN"/>
                                                 <constraint firstItem="FNj-eH-ADP" firstAttribute="leading" secondItem="ZLm-u2-CbQ" secondAttribute="leadingMargin" id="Yh7-0Y-f3l"/>
-                                                <constraint firstItem="4qg-i9-fO3" firstAttribute="leading" secondItem="FNj-eH-ADP" secondAttribute="trailing" constant="32" id="ZoZ-fL-Kyg"/>
-                                                <constraint firstItem="FNj-eH-ADP" firstAttribute="baseline" secondItem="4qg-i9-fO3" secondAttribute="firstBaseline" id="bQ6-E3-u4E"/>
-                                                <constraint firstItem="4qg-i9-fO3" firstAttribute="top" secondItem="ZLm-u2-CbQ" secondAttribute="topMargin" constant="10" id="rfZ-iy-Z4T"/>
                                                 <constraint firstItem="Vd8-AN-rJr" firstAttribute="leading" secondItem="ZLm-u2-CbQ" secondAttribute="leadingMargin" id="ySh-Xf-rEb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dueDateLabel" destination="Vd8-AN-rJr" id="QG2-gy-isd"/>
-                                            <outlet property="editButton" destination="4qg-i9-fO3" id="wdu-6q-M0Y"/>
                                             <outlet property="nameLabel" destination="FNj-eH-ADP" id="BF7-9u-TuT"/>
                                         </connections>
                                     </tableViewCell>
@@ -209,7 +193,7 @@
         <!--Task Detail View Controller-->
         <scene sceneID="eDt-re-Wzh">
             <objects>
-                <viewController id="xLy-BF-2sb" customClass="TaskDetailViewController" customModule="MAPD714_TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskDetailViewController" id="xLy-BF-2sb" customClass="TaskDetailViewController" customModule="MAPD714_TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9ic-1G-cX8">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -467,11 +451,7 @@
             <point key="canvasLocation" x="130.53435114503816" y="-28.169014084507044"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="2Jd-si-pkj"/>
-    </inferredMetricsTieBreakers>
     <resources>
-        <image name="EditButton" width="21" height="19"/>
         <image name="dateIcon" width="58" height="59"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

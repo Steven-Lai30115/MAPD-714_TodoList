@@ -95,6 +95,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        var actionList: [UIContextualAction] = []
+        if tableView == todoTableView {
+            
+            let editAction = UIContextualAction(style: .normal, title: "") { _, _, completion in
+                let todo =  self.todos[indexPath.row]
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TaskDetailViewController") as! TaskDetailViewController
+                vc.todo = todo
+                
+                let transition = CATransition()
+                transition.duration = 0.5
+                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                transition.type = CATransitionType.push
+                transition.subtype = CATransitionSubtype.fromLeft
+                self.navigationController?.view.layer.add(transition, forKey: kCATransition)
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+                completion(true)
+            }
+            
+            editAction.backgroundColor = .blue
+            actionList.append(editAction)
+        }
+        
+        let config = UISwipeActionsConfiguration(actions: actionList)
+        config.performsFirstActionWithFullSwipe = false
+        return config
+    }
+    
     // display button when swipe left & set the action when done button and delete button clicked
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         switch tableView {

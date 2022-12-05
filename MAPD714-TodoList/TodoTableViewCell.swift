@@ -13,8 +13,6 @@ class TodoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var dueDateLabel: UILabel!
     
-    @IBOutlet weak var editButton: UIButton!
-    
     var todo : Todo = Todo()
     
     
@@ -42,9 +40,5 @@ class TodoTableViewCell: UITableViewCell {
         }
         self.todo = todo
     }
-    
-    
-    @IBAction func onEditButtonClick(_ sender: UIButton) {
-        
-    }
+
 }
