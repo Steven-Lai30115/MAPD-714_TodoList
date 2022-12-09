@@ -50,7 +50,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             case pastTaskTableView:
                 return 40
             case todoTableView:
-                return 70
+                return 50
             default:
                 return 70
         }
